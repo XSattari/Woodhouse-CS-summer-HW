@@ -1,0 +1,37 @@
+Checking if a word is a palindrome:
+A word is a palindrome if it is the same forwards and backwards.
+To check if it is a palindrome, you can check that the index of the word is equal to its same position starting from the back of the word.
+There are many ways to do this.
+My first way, quite long, looks liket the following-
+
+def palindrome(word):
+    n = 0 
+    is_palindrome = True
+    while n <= int(round(len(word)/2)):
+        if word[n]!=word[-(n+1)]:
+            is_palindrome = False
+        n += 1
+    return is_palindrome
+    
+This is a function which takes a word and cycles through the first half of a word, and checks if the position from the start is the same as the position from the end.
+For example, the first and last letter, second first and second last etc.
+If there are two letters which do not match, the boolean, defaulted as True, is set to False, which is returned from the function.
+Only half the word is used as the whole word is not necessary, and if the word has an odd number of letters, this length is rounded. 
+
+If we are to check for "racecar" by adding 
+print(palindrome("racecar"))
+to our code, we get the value True.
+This is as r == r a == a c == c e == e c ==c all are equal so boolean stays as True.
+
+However, for "defied", saying
+print(palindrome("defifed"))
+we get False.
+This is because d == d e == e f != i there is a mismatch so boolean becomes False.
+
+The function can be further abstracted to one line, instead looking like
+
+def palindrome(word):
+    return word == word[::-1]
+    
+With this function, the word is compared to the same word reversed (achieved by setting the "step" when slicing at -1, effectively reversing the word).
+This is a lot simpler, both in appearance and complexity, yet functions the same.
