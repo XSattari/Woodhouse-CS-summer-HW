@@ -1,0 +1,47 @@
+Lottery Task (Extention):
+I have done the extention to this, where user inputs 7 numbers, and this input is verified.
+They then see the correct numbers, and told how many they got right and what those correct numbers are.
+However, I did not quite understand what was meant by the probability, so I assumed it was the probability of picking the numbers they picked.
+Repl link: https://replit.com/@XSattari/Lottery-Extention-Task#main.py
+
+import random
+import time
+
+inp = list(map(int, list((input("Enter 7 numbers, between 1 and 49, separated by a single space \n")).split())))
+nums = list(random.sample(range(1, 49), 7))
+count = 0
+correct = []
+
+#Verifying input
+if len(inp) != 7:
+    print("Invalid input: Input must be 7 numbers")
+elif max(inp) > 49 or min(inp) < 1:
+    print("Invalid input: Input must be in range 1-49")
+elif len(set(inp)) != 7:
+    print("Invalid input: Input must not contain duplicate numbers")
+
+#If input is valid, then continues
+else:
+    print("\n-----------------------------------------------------")
+    time.sleep(0.5)
+    print(f"\nYour numbers are {inp}")
+    time.sleep(0.5)
+    print("The probability of you choosing that combination of numbers was one in 432,938,943,400!")
+    time.sleep(3)
+    #The probability of picking 7 different numbers between 1 and 49 is 49 x 48 x 47 x 46 x 45 x 44 x 43 which is 432,938,943,400 
+    print(f"\nThe lottery numbers are {nums}")
+    time.sleep(1)
+
+    for i in inp:
+        if i in nums:
+            count += 1
+            correct.append(i)
+    print(f"\nYou got none of the numbers right\n" if count == 0 else f"You got {count}/7 numbers right, being {correct}\n")
+    time.sleep(1)
+    if count == 7:
+        print("Congratulations!")
+    elif count == 6:
+        print("So close!")
+    else:
+        print("Better luck next time!")
+
