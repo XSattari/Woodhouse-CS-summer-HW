@@ -1,0 +1,61 @@
+This is the opposites word game quiz.
+(Not the extension)
+I had to add an extra 4 words to each word list to prevent repetition, and allow unique word-pairs for every question.
+Replit: https://replit.com/@XSattari/OppositesQuiz#main.py
+
+
+Code:
+
+import random
+
+l1 = ["hot", "summer", "hard", "dry", "simple",
+     "light", "weak", "male", "sad", "win", "small",
+     "ignore", "buy", "succeed", "reject", "prevent",
+     "exclude", "angry", "optimistic", "near", "heaven"]
+
+l2 = ["cold", "winter", "soft", "wet", "complex",
+      "darkness", "strong", "female", "happy",
+      "lose", "big", "pay attention", "sell", "fail",
+      "accept", "allow", "include", "calm", "pessimistic",
+      "far", "hell"]
+
+
+qcount = 1 
+score = 0
+
+print("Lets have a quiz. Whats the opposite of the word?\n-----------------------------\n")
+
+while qcount <= 10:
+    n = random.randrange(1, len(l1)-1)
+    n2 = random.randrange(1, len(l1)-1)
+    if n == n2:
+        if n == len(l1):
+            n -= 1
+        else:
+            n += 1
+
+    Q = input(f"Q{qcount}: {l1[n]} is to {l2[n]} as {l1[n2]} is to...?\nAnswer: ")
+    if Q.lower() == l2[n2]:
+        print("Correct!\n")
+        score += 1
+    else:
+        print(f"Not quite! The answer is '{l2[n2]}'\n")
+
+    l1.remove(l1[n]), l2.remove(l2[n])
+    if n > n2:
+        l1.remove(l1[n2]), l2.remove(l2[n2])
+    else:
+        l1.remove(l1[n2-1]), l2.remove(l2[n2-1])
+
+    qcount += 1
+
+print(f"-----------------------------\nYou scored {score}/10.\n")
+if score == 10:
+    print("Congratulations, you got them all right!")
+elif score < 10 and score > 5:
+    print("Not bad")
+elif score < 6 and score > 1:
+    print("Could be worse...")
+else:
+    print("Wow that's bad")
+print("Thanks for playing!")
