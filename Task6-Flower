@@ -12,10 +12,10 @@ while n < 360:
   t.setheading(0)
   t.left(n)
   t.forward(75)
-  t.left(50)
+  t.left(60)
   t.forward(75)
-  t.left(130)
+  t.left(120)
   t.forward(75)
-  t.left(50)
+  t.left(60)
   t.forward(75)
   n+=36
